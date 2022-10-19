@@ -1,0 +1,15 @@
+name: bicep-pipeline
+run-name: ${{ github.actor }} is practicing bicep pipelines
+on: [push]
+jobs:
+  main-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello-World!
+        run: |
+          echo "Hey there, this is a test for a Biceps pipeline"
+
+      - name: Deployment
+        run: |
+          az deployment group what-if --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep
+          az deployment group create --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep 
