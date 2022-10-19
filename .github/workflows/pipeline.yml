@@ -16,6 +16,10 @@ jobs:
           ls
           ls ..
 
+      # - name: Azure Login
+      #   run: |
+      #     Need a security principal
+
       - name: Deployment
         run: |
           az deployment group what-if --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep
