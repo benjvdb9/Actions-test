@@ -11,5 +11,5 @@ jobs:
 
       - name: Deployment
         run: |
-          echo "az deployment group what-if --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep"
-          echo "az deployment group create --resource-group ${{ secrets.zdfsRG_NAME }} --template-file main.bicep" 
+          az deployment group what-if --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep
+          az deployment group create --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep
