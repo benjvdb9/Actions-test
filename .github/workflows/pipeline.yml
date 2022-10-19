@@ -5,11 +5,18 @@ jobs:
   main-pipeline:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Hello-World!
         run: |
           echo "Hey there, this is a test for a Biceps pipeline"
 
+      - name: Get-Repo
+        run: |
+          ls
+          ls ..
+
       - name: Deployment
         run: |
-          az deployment group what-if --resource-group ${{ secrets.RG_NAME }} --template-file '../main.bicep'
-          az deployment group create --resource-group ${{ secrets.RG_NAME }} --template-file '../main.bicep'
+          az deployment group what-if --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep
+          az deployment group create --resource-group ${{ secrets.RG_NAME }} --template-file main.bicep
